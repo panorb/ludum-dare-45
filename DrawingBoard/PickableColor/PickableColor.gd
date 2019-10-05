@@ -1,24 +1,24 @@
-extends Area2D
+extends Node2D
 
 var color = Color.aqua
-onready var display = get_node('Display')
+onready var color_rect = get_node('ColorRect')
 onready var animation_player = get_node('AnimationPlayer')
 
 func init(color):
 	self.color = color
 
 func _ready():
-	print("why")
-	connect('mouse_entered', self, '_mouse_entered')
-	connect('mouse_exited', self, '_mouse_exited')
-	display.color = color
+	color_rect.connect('mouse_entered', self, '_mouse_entered')
+	color_rect.connect('mouse_exited', self, '_mouse_exited')
+	color_rect.connect('gui_input', self, '_gui_input')
+	color_rect.color = color
 	animation_player.play("__INIT__")
 
 func _mouse_entered():
-	print('wew')
-	animation_player.play("hover_over")
-	pass
+	animation_player.play("hover")
 
 func _mouse_exited():
-	animation_player.play("__INIT__")
+	animation_player.play_backwards("hover")
+
+func _gui_input(event):
 	pass
