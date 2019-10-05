@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://moving character/Movemant.gd" type="Script" id=1]
 [ext_resource path="res://moving character/Boss Area.tscn" type="PackedScene" id=2]
 [ext_resource path="res://moving character/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Background.png" type="Texture" id=4]
-[ext_resource path="res://moving character/House.tscn" type="PackedScene" id=5]
-[ext_resource path="res://moving character/Stone_movable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://moving character/Textbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://tilemap/test.json" type="PackedScene" id=5]
+[ext_resource path="res://moving character/House.tscn" type="PackedScene" id=6]
+[ext_resource path="res://moving character/Stone_movable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://moving character/Textbox.tscn" type="PackedScene" id=8]
 
 [node name="Movemant" type="Node2D"]
 position = Vector2( 1.22778, 0 )
@@ -28,13 +29,17 @@ texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1280, 720 )
 
-[node name="House" parent="." instance=ExtResource( 5 )]
+[node name="test2" parent="." instance=ExtResource( 5 )]
+visible = false
+scale = Vector2( 5, 5 )
+
+[node name="House" parent="." instance=ExtResource( 6 )]
 position = Vector2( 796.62, 368.568 )
 
-[node name="Stone_movable" parent="." instance=ExtResource( 6 )]
+[node name="Stone_movable" parent="." instance=ExtResource( 7 )]
 position = Vector2( 130.718, 79.223 )
 
-[node name="Textbox" parent="." instance=ExtResource( 7 )]
+[node name="Textbox" parent="." instance=ExtResource( 8 )]
 [connection signal="bossarea_entered" from="Boss Area" to="Textbox" method="_on_Boss_Area_bossarea_entered"]
 [connection signal="bossarea_left" from="Boss Area" to="Textbox" method="_on_Boss_Area_bossarea_left"]
 [connection signal="cam_pos_changed" from="Player" to="Textbox" method="_on_Player_cam_pos_changed"]
