@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Pen and Play"
-run/main_scene="res://DrawingBoard.tscn"
+run/main_scene="res://DrawingBoard/DrawingBoard.tscn"
 config/icon="res://icon.png"
 
 [display]
