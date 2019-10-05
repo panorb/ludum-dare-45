@@ -23,9 +23,8 @@ config/icon="res://icon.png"
 
 window/size/width=1280
 window/size/height=720
-window/vsync/use_vsync=false
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 
@@ -70,7 +69,7 @@ change_scene2={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
+quality/driver/driver_name="GLES3"
 quality/2d/use_pixel_snap=true
 environment/default_clear_color=Color( 1, 0, 1, 1 )
 environment/default_environment="res://default_env.tres"

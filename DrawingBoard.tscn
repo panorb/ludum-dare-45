@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://DrawingBoard.gd" type="Script" id=1]
 [ext_resource path="res://DrawingBoard/Colors.gd" type="Script" id=2]
 [ext_resource path="res://DrawingBoard/DrawingBoard.gd" type="Script" id=3]
 [ext_resource path="res://DrawingBoard/Background.png" type="Texture" id=4]
 [ext_resource path="res://DrawingBoard/OutputBoard.gd" type="Script" id=5]
-[ext_resource path="res://pink_to_transparency.shader" type="Shader" id=6]
+[ext_resource path="res://DrawingBoard/Frame.png" type="Texture" id=6]
+[ext_resource path="res://pink_to_transparency.shader" type="Shader" id=7]
+[ext_resource path="res://DrawingBoard/PickableColor/PickableColor.tscn" type="PackedScene" id=8]
 
 [sub_resource type="World" id=1]
 resource_local_to_scene = true
@@ -14,7 +16,7 @@ resource_local_to_scene = true
 extents = Vector2( 192, 192 )
 
 [sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 6 )
+shader = ExtResource( 7 )
 shader_param/chroma_key = Color( 1, 0, 1, 1 )
 
 [sub_resource type="ViewportTexture" id=4]
@@ -27,6 +29,7 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Board" type="Viewport" parent="."]
+editor/display_folded = true
 size = Vector2( 128, 128 )
 world = SubResource( 1 )
 handle_input_locally = false
@@ -38,7 +41,7 @@ render_target_update_mode = 3
 [node name="Drawing" type="Node2D" parent="Board"]
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Paper" type="Sprite" parent="."]
 position = Vector2( 640, 360 )
 texture = ExtResource( 4 )
 region_enabled = true
@@ -50,9 +53,15 @@ script = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutputBoard"]
 shape = SubResource( 2 )
 
+[node name="Frame" type="Sprite" parent="OutputBoard"]
+texture = ExtResource( 6 )
+
 [node name="Output" type="Sprite" parent="OutputBoard"]
 material = SubResource( 3 )
 position = Vector2( -0.100586, 0.491943 )
 scale = Vector2( 3, 3 )
 texture = SubResource( 4 )
+
+[node name="PickableColor" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1018.31, 72.9377 )
 [connection signal="pen_drawn" from="OutputBoard" to="Board/Drawing" method="_on_OutputBoard_pen_drawn"]
