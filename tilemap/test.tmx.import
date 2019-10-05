@@ -12,11 +12,11 @@ dest_files=[ "res://.import/test.tmx-e2fdd104edb104d1ace7eb35ba171f0f.scn" ]
 [params]
 
 custom_properties=true
-tile_metadata=false
+tile_metadata=true
 uv_clip=true
-image_flags=7
+image_flags=63
 collision_layer=1
-embed_internal_images=false
-save_tiled_properties=false
+embed_internal_images=true
+save_tiled_properties=true
 add_background=true
 post_import_script=""
