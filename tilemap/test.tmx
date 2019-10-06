@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
- <tileset firstgid="1" source="dark baeume.tsx"/>
- <tileset firstgid="289" source="Baeme.tsx"/>
- <tileset firstgid="343" source="haus.tsx"/>
- <tileset firstgid="427" source="ander haus.tsx"/>
+ <tileset firstgid="1" source="resources/dark baeume.tsx"/>
+ <tileset firstgid="289" source="resources/Baeme.tsx"/>
+ <tileset firstgid="343" source="resources/haus.tsx"/>
+ <tileset firstgid="427" source="resources/ander haus.tsx"/>
+ <tileset firstgid="544" source="resources/boss.tsx"/>
  <layer id="1" name="Kachelebene 1" width="100" height="100">
   <data encoding="csv">
 332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,335,334,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,332,

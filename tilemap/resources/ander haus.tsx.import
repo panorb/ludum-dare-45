@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/ander haus.tsx-cc9facd2e335e907b5f12ac0ada9c06a.res"
+
+[deps]
+
+source_file="res://tilemap/resources/ander haus.tsx"
+dest_files=[ "res://.import/ander haus.tsx-cc9facd2e335e907b5f12ac0ada9c06a.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""

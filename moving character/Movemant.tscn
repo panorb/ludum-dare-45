@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://moving character/Movemant.gd" type="Script" id=1]
-[ext_resource path="res://moving character/Boss Area.tscn" type="PackedScene" id=2]
+[ext_resource path="res://moving character/Bossarea/Boss Area.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Background.png" type="Texture" id=3]
 [ext_resource path="res://tilemap/test.png" type="Texture" id=4]
 [ext_resource path="res://tilemap/test.tmx" type="PackedScene" id=5]
-[ext_resource path="res://moving character/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://moving character/Stone_movable.tscn" type="PackedScene" id=7]
-[ext_resource path="res://moving character/Textbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://moving character/PLayer/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://moving character/movable_stone/Stone_movable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://moving character/textbox/Textbox.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
