@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Background.png" type="Texture" id=1]
+[ext_resource path="res://moving character/textures/sign.png" type="Texture" id=2]
+[ext_resource path="res://moving character/Drawing/Drawing.tscn" type="PackedScene" id=3]
+[ext_resource path="res://font/endscreen.tres" type="DynamicFont" id=4]
+[ext_resource path="res://font/game by.tres" type="DynamicFont" id=5]
+
+[node name="Endscreen" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1280, 720 )
+
+[node name="Contract" type="Sprite" parent="."]
+position = Vector2( 707.208, 109.506 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 2 )
+
+[node name="Drawing" parent="." instance=ExtResource( 3 )]
+position = Vector2( 596.929, 544.51 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+drawing_identifier = "Sign"
+
+[node name="thy" type="Label" parent="."]
+margin_left = 13.8534
+margin_top = 3.09261
+margin_right = 1213.85
+margin_bottom = 285.093
+rect_min_size = Vector2( 1000, 0 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Gongratulation you got fired. 
+Now you have time for your creativity.
+Thanks for playing."
+autowrap = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 650.825
+margin_top = 678.817
+margin_right = 1477.82
+margin_bottom = 736.817
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Game for Ludumdare 45 by DerAnonymos and YellowKamel."

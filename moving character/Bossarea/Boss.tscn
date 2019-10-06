@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://moving character/Bossarea/Boss.gd" type="Script" id=1]
 [ext_resource path="res://moving character/Bossarea/AnimationPlayer.gd" type="Script" id=2]
@@ -71,6 +71,9 @@ tracks/0/keys = {
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 50, 50 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 120, 120 )
 
 [node name="Boss" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -152,5 +155,15 @@ region_rect = Rect2( 640, 0, 128, 128 )
 __meta__ = {
 "_ase_imported": true
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 26 )
+shape = SubResource( 6 )
 [connection signal="hide" from="." to="CollisionShape2D" method="_on_Boss_hide"]
 [connection signal="got_awaken" from="AnimationPlayer" to="." method="_on_AnimationPlayer_got_awaken"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

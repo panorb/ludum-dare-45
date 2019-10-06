@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://moving character/Movemant.gd" type="Script" id=1]
 [ext_resource path="res://npc area.tscn" type="PackedScene" id=2]
@@ -7,16 +7,19 @@
 [ext_resource path="res://tilemap/test.png" type="Texture" id=5]
 [ext_resource path="res://tilemap/test.tmx" type="PackedScene" id=6]
 [ext_resource path="res://moving character/Drawing/Drawing.tscn" type="PackedScene" id=7]
-[ext_resource path="res://moving character/textures/armor_placeholder.png" type="Texture" id=8]
-[ext_resource path="res://moving character/textures/shoe_placeholder.png" type="Texture" id=9]
-[ext_resource path="res://moving character/textures/sign.png" type="Texture" id=10]
-[ext_resource path="res://moving character/textures/hat _placeholder.png" type="Texture" id=11]
-[ext_resource path="res://moving character/PLayer/Player.tscn" type="PackedScene" id=12]
-[ext_resource path="res://moving character/textbox/Textbox.tscn" type="PackedScene" id=13]
-[ext_resource path="res://moving character/Bossarea/Boss.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Closing Bossdoors.tscn" type="PackedScene" id=15]
-[ext_resource path="res://moving character/enemy/Enemy.tscn" type="PackedScene" id=16]
-[ext_resource path="res://moving character/Drawing/DrawingArea.tscn" type="PackedScene" id=17]
+[ext_resource path="res://moving character/textures/hat _placeholder.png" type="Texture" id=8]
+[ext_resource path="res://moving character/ArmorHider.gd" type="Script" id=9]
+[ext_resource path="res://moving character/textures/armor_placeholder.png" type="Texture" id=10]
+[ext_resource path="res://moving character/ShoesHider.gd" type="Script" id=11]
+[ext_resource path="res://moving character/textures/shoe_placeholder.png" type="Texture" id=12]
+[ext_resource path="res://moving character/SignEnd.gd" type="Script" id=13]
+[ext_resource path="res://moving character/textures/sign.png" type="Texture" id=14]
+[ext_resource path="res://moving character/PLayer/Player.tscn" type="PackedScene" id=15]
+[ext_resource path="res://moving character/textbox/Textbox.tscn" type="PackedScene" id=16]
+[ext_resource path="res://moving character/Bossarea/Boss.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Closing Bossdoors.tscn" type="PackedScene" id=18]
+[ext_resource path="res://moving character/Drawing/DrawingArea.tscn" type="PackedScene" id=19]
+[ext_resource path="res://moving character/enemy/Enemy.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -63,9 +66,10 @@ position = Vector2( 5966.68, 5263.82 )
 
 [node name="Boss Area" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 5577.28, 6397.37 )
+position = Vector2( 5566.73, 6131.9 )
 
 [node name="Ground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 
 [node name="Ground" type="ParallaxLayer" parent="Ground"]
 pause_mode = 2
@@ -77,86 +81,88 @@ texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1280, 720 )
 
-[node name="test2" type="Sprite" parent="."]
+[node name="Area" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 2722.63, 3314.06 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 5 )
 
-[node name="test" parent="test2" instance=ExtResource( 6 )]
+[node name="test" parent="Area" instance=ExtResource( 6 )]
 visible = false
 position = Vector2( -799.758, -800.212 )
 
-[node name="Drawings" type="Node" parent="."]
-
-[node name="Armor" parent="Drawings" instance=ExtResource( 7 )]
-position = Vector2( 5904.84, 2114.35 )
-rotation = -4.18879
-scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 8 )
-drawing_identifier = "Armor"
-
-[node name="Shoes" parent="Drawings" instance=ExtResource( 7 )]
-position = Vector2( -250.959, 2710.99 )
-rotation = -0.380482
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 9 )
-drawing_identifier = "Shoes"
-
-[node name="Sign" parent="Drawings" instance=ExtResource( 7 )]
-position = Vector2( -463.382, 5245.71 )
-rotation = -0.380482
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 10 )
-drawing_identifier = "Sign"
+[node name="Drawings" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Hat" parent="Drawings" instance=ExtResource( 7 )]
-position = Vector2( 6023.97, 5152.93 )
+position = Vector2( 5993.24, 5012.56 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 11 )
+texture = ExtResource( 8 )
 drawing_identifier = "Hat"
 
-[node name="Player" parent="." instance=ExtResource( 12 )]
+[node name="ArmorHider" type="Node2D" parent="Drawings"]
+editor/display_folded = true
+script = ExtResource( 9 )
+
+[node name="Armor" parent="Drawings/ArmorHider" instance=ExtResource( 7 )]
+position = Vector2( 5889.71, 1987.04 )
+rotation = 2.0944
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 10 )
+drawing_identifier = "Armor"
+
+[node name="ShoesHider" type="Node2D" parent="Drawings"]
+editor/display_folded = true
+script = ExtResource( 11 )
+
+[node name="Shoes" parent="Drawings/ShoesHider" instance=ExtResource( 7 )]
+position = Vector2( -287.327, 2570.94 )
+rotation = -0.380482
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 12 )
+drawing_identifier = "Shoes"
+
+[node name="SignEnd" type="Node2D" parent="Drawings"]
+editor/display_folded = true
+script = ExtResource( 13 )
+
+[node name="Sign" parent="Drawings/SignEnd" instance=ExtResource( 7 )]
+position = Vector2( -492.712, 5099.06 )
+rotation = -0.380482
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 14 )
+drawing_identifier = "Sign"
+
+[node name="Player" parent="." instance=ExtResource( 15 )]
 position = Vector2( 3.21865e-006, 0.000244141 )
 collision_layer = 15
 
-[node name="Textbox" parent="." instance=ExtResource( 13 )]
+[node name="Textbox" parent="." instance=ExtResource( 16 )]
 
-[node name="Boss" parent="." instance=ExtResource( 14 )]
+[node name="Boss" parent="." instance=ExtResource( 17 )]
 position = Vector2( 4537.88, 6576.89 )
 
-[node name="Closing Bossdoors" parent="." instance=ExtResource( 15 )]
-
-[node name="Enemy" parent="." instance=ExtResource( 16 )]
-editor/display_folded = true
-position = Vector2( 4788.35, 42.7982 )
-
-[node name="Enemy" parent="Enemy" instance=ExtResource( 16 )]
-position = Vector2( -915.51, 666.774 )
-
-[node name="Enemy2" parent="Enemy" instance=ExtResource( 16 )]
-position = Vector2( -1217.61, -78.4165 )
-
-[node name="Enemy3" parent="Enemy" instance=ExtResource( 16 )]
-position = Vector2( 408.068, 1021.64 )
+[node name="Closing Bossdoors" parent="." instance=ExtResource( 18 )]
 
 [node name="Drawingareas" type="Node2D" parent="."]
+editor/display_folded = true
 
-[node name="Enemy" parent="Drawingareas" instance=ExtResource( 17 )]
-position = Vector2( 3239.71, 621.327 )
+[node name="Enemy" parent="Drawingareas" instance=ExtResource( 19 )]
+position = Vector2( 3558.48, 680.178 )
 batch_name = "enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawingareas/Enemy"]
 rotation = 1.0472
 shape = SubResource( 3 )
 
-[node name="Shoes" parent="Drawingareas" instance=ExtResource( 17 )]
+[node name="Shoes" parent="Drawingareas" instance=ExtResource( 19 )]
 position = Vector2( -280.932, 2589.94 )
 batch_name = "shoes"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawingareas/Shoes"]
 shape = SubResource( 4 )
 
-[node name="Armor" parent="Drawingareas" instance=ExtResource( 17 )]
+[node name="Armor" parent="Drawingareas" instance=ExtResource( 19 )]
 position = Vector2( 5887.79, 1982.58 )
 batch_name = "armor"
 
@@ -164,17 +170,42 @@ batch_name = "armor"
 position = Vector2( 1.19141, 10.3274 )
 shape = SubResource( 5 )
 
-[node name="Sign" parent="Drawingareas" instance=ExtResource( 17 )]
+[node name="Sign" parent="Drawingareas" instance=ExtResource( 19 )]
 position = Vector2( -492.338, 5104.44 )
 batch_name = "sign"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drawingareas/Sign"]
 shape = SubResource( 6 )
+
+[node name="Enemys" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Enemy" parent="Enemys" instance=ExtResource( 20 )]
+position = Vector2( 5244.44, 606.782 )
+
+[node name="Enemy2" parent="Enemys" instance=ExtResource( 20 )]
+position = Vector2( 4539.81, 1376.54 )
+
+[node name="Enemy3" parent="Enemys" instance=ExtResource( 20 )]
+position = Vector2( 4205.89, 478.214 )
+
+[node name="Enemy4" parent="Enemys" instance=ExtResource( 20 )]
+position = Vector2( 5712.18, 1716.51 )
 [connection signal="npc_area_in" from="npc area" to="Textbox" method="_on_npc_area_npc_area_in"]
 [connection signal="npc_area_out" from="npc area" to="Textbox" method="_on_npc_area_npc_area_out"]
 [connection signal="bossarea_entered" from="Boss Area" to="Textbox" method="_on_Boss_Area_bossarea_entered"]
 [connection signal="bossarea_left" from="Boss Area" to="Textbox" method="_on_Boss_Area_bossarea_left"]
+[connection signal="attack" from="Player" to="Enemys/Enemy4" method="_on_Player_attack"]
+[connection signal="attack" from="Player" to="Enemys/Enemy3" method="_on_Player_attack"]
+[connection signal="attack" from="Player" to="Enemys/Enemy2" method="_on_Player_attack"]
+[connection signal="attack" from="Player" to="Boss" method="_on_Player_attack"]
+[connection signal="attack" from="Player" to="Enemys/Enemy" method="_on_Player_attack"]
 [connection signal="cam_pos_changed" from="Player" to="Textbox" method="_on_Player_cam_pos_changed"]
 [connection signal="close_doors" from="Boss" to="Closing Bossdoors" method="_on_Boss_close_doors"]
-[connection signal="hide" from="Boss" to="Boss Area" method="_on_Boss_hide"]
+[connection signal="did_hit" from="Boss" to="Player" method="_on_Boss_did_hit"]
 [connection signal="hide" from="Boss" to="Closing Bossdoors" method="_on_Boss_hide"]
+[connection signal="hide" from="Boss" to="Boss Area" method="_on_Boss_hide"]
+[connection signal="did_hit" from="Enemys/Enemy" to="Player" method="_on_Enemy_did_hit"]
+[connection signal="did_hit" from="Enemys/Enemy2" to="Player" method="_on_Enemy2_did_hit"]
+[connection signal="did_hit" from="Enemys/Enemy3" to="Player" method="_on_Enemy3_did_hit"]
+[connection signal="did_hit" from="Enemys/Enemy4" to="Player" method="_on_Enemy4_did_hit"]
