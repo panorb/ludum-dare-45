@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://moving character/PLayer/Player.gd" type="Script" id=1]
-[ext_resource path="res://moving character/textures/Character.png" type="Texture" id=2]
-[ext_resource path="res://moving character/PLayer/Camera2D.gd" type="Script" id=3]
+[ext_resource path="res://moving character/PLayer/Camera2D.gd" type="Script" id=2]
+[ext_resource path="res://moving character/Drawing/Drawing.tscn" type="PackedScene" id=3]
+[ext_resource path="res://moving character/textures/Character.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -14,10 +15,23 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="PlayerSprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-script = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="PlayerSprite" parent="." instance=ExtResource( 3 )]
+texture = ExtResource( 4 )
+drawing_identifier = "Player"
+
+[node name="Armor" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0.614716, 18.1341 )
+scale = Vector2( 0.7, 0.7 )
+texture = null
+drawing_identifier = "Armor"
+
+[node name="Shoes" parent="." instance=ExtResource( 3 )]
+position = Vector2( -0.193703, 32.1561 )
+scale = Vector2( 0.5, 0.5 )
+texture = null
+drawing_identifier = "Shoes"
 [connection signal="cam_pos_changed" from="Camera2D" to="." method="_on_Camera2D_cam_pos_changed"]
