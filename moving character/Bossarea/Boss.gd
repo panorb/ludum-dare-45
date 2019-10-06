@@ -1,6 +1,6 @@
 extends KinematicBody2D
 signal close_doors
-var speed = 500
+var speed = 200
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -16,9 +16,21 @@ func _process(delta):
 	var pos = Vector2(0,0)
 	if get_node("AnimationPlayer").get_current_animation() == "idle":
 		if get_node("CollisionShape2D/RayCast2D").is_colliding():
+			pos += Vector2(1,0)
+		if get_node("CollisionShape2D/RayCast2D2").is_colliding():
+			pos += Vector2(1,1)
+		if get_node("CollisionShape2D/RayCast2D3").is_colliding():
+			pos += Vector2(1,-1)
+		if get_node("CollisionShape2D/RayCast2D4").is_colliding():
+			pos += Vector2(0,1)
+		if get_node("CollisionShape2D/RayCast2D5").is_colliding():
+			pos += Vector2(0,-1)
+		if get_node("CollisionShape2D/RayCast2D6").is_colliding():
+			pos += Vector2(-1,0)
+		if get_node("CollisionShape2D/RayCast2D7").is_colliding():
+			pos += Vector2(-1,1)
+		if get_node("CollisionShape2D/RayCast2D8").is_colliding():
 			pos += Vector2(-1,-1)
-		
-		
 		self.move_and_slide(pos*speed)
 		pass
 
