@@ -2,12 +2,18 @@ extends KinematicBody2D
 signal cam_pos_changed(cam_pos)
 var speed = 400
 
+onready var globals = get_node("/root/Globals")
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var life = 1
+	self.position = globals.position
+	if "armor" in globals.drawn:
+		life = 3
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +24,7 @@ func _ready():
 func _physics_process(delta):
 	var pos = Vector2(0,0)
 	var dir
-	if Input.is_action_pressed("interact"):
+	if "shoes" in globals.drawn:
 		speed = 700
 	if Input.is_action_pressed("move_up"):
 			pos.y-=1

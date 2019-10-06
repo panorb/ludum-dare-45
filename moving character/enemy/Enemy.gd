@@ -1,4 +1,5 @@
 extends KinematicBody2D
+var speed = 500
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -10,7 +11,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_node("RayCast2D"):
-		pass
-	
-	pass
+	var pos = Vector2(0,0)
+	if get_node("RayCast2D").is_colliding():
+		pos += Vector2(-1,1)
+	if get_node("RayCast2D2").is_colliding():
+		pos += Vector2(1,1)
+	if get_node("RayCast2D3").is_colliding():
+		pos += Vector2(-1,-1)
+	if get_node("RayCast2D4").is_colliding():
+		pos += Vector2(1,-1)
+	self.move_and_slide(pos*speed)

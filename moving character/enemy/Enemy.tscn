@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://moving character/enemy/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://moving character/enemy/Unbenannt.png" type="Texture" id=2]
+[ext_resource path="res://moving character/Drawing/Drawing.tscn" type="PackedScene" id=2]
+[ext_resource path="res://moving character/enemy/Unbenannt.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.0
@@ -13,33 +14,34 @@ script = ExtResource( 1 )
 position = Vector2( 1.58113, 12.3854 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="Drawing" parent="." instance=ExtResource( 2 )]
+texture = ExtResource( 3 )
+drawing_identifier = "Enemy"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 1.581, 12.385 )
 rotation = 0.785398
-scale = Vector2( 40, 5 )
+scale = Vector2( 100, 8 )
 enabled = true
 collision_mask = 8
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 position = Vector2( 1.581, 12.385 )
 rotation = -0.785398
-scale = Vector2( 40, 5 )
+scale = Vector2( 100, 8 )
 enabled = true
 collision_mask = 8
 
 [node name="RayCast2D3" type="RayCast2D" parent="."]
 position = Vector2( 1.581, 12.385 )
 rotation = 2.35619
-scale = Vector2( 40, 5 )
+scale = Vector2( 100, 8 )
 enabled = true
 collision_mask = 8
 
 [node name="RayCast2D4" type="RayCast2D" parent="."]
 position = Vector2( 1.581, 12.385 )
 rotation = -2.35619
-scale = Vector2( 40, 5 )
+scale = Vector2( 100, 8 )
 enabled = true
 collision_mask = 8

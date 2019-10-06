@@ -2,6 +2,8 @@ extends Node
 
 var drawings = {}
 
+onready var globals = get_node("/root/Globals")
+
 var main_game_scene_path = "res://moving character/Movemant.tscn"
 var drawing_board_scene_path = "res://DrawingBoard/DrawingBoard.tscn"
 var cur_batch_lines
@@ -21,6 +23,11 @@ func get_drawing(identifier):
 	return drawings[identifier]
 
 func start_drawing_batch(name):
+	if name in globals.drawn:
+		return
+	
+	globals.drawn.append(name)
+	
 	var file = File.new()
 	
 	if file.file_exists("res://DrawingManager/" + name + ".txt"):

@@ -1,0 +1,1 @@
+Armor:Draw your Armor.:Make it durable!;And also comfy!:0.285,0.220,0.027;0.166,0.132,0.031;0.0,0.0,0.0
