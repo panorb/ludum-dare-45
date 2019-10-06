@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://moving character/Movemant.gd" type="Script" id=1]
-[ext_resource path="res://moving character/Bossarea/Boss Area.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Background.png" type="Texture" id=3]
-[ext_resource path="res://tilemap/test.png" type="Texture" id=4]
-[ext_resource path="res://tilemap/test.tmx" type="PackedScene" id=5]
-[ext_resource path="res://moving character/PLayer/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://moving character/movable_stone/Stone_movable.tscn" type="PackedScene" id=7]
-[ext_resource path="res://moving character/textbox/Textbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://npc area.tscn" type="PackedScene" id=2]
+[ext_resource path="res://moving character/Bossarea/Boss Area.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Background.png" type="Texture" id=4]
+[ext_resource path="res://tilemap/test.png" type="Texture" id=5]
+[ext_resource path="res://tilemap/test.tmx" type="PackedScene" id=6]
+[ext_resource path="res://moving character/PLayer/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://moving character/movable_stone/Stone_movable.tscn" type="PackedScene" id=8]
+[ext_resource path="res://moving character/textbox/Textbox.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -36,7 +37,12 @@ material = SubResource( 2 )
 position = Vector2( 1.22778, 0 )
 script = ExtResource( 1 )
 
-[node name="Boss Area" parent="." instance=ExtResource( 2 )]
+[node name="npc area" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 5966.68, 5263.82 )
+
+[node name="Boss Area" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4964.46, 6564.24 )
 
 [node name="Ground" type="ParallaxBackground" parent="."]
 
@@ -46,26 +52,28 @@ motion_mirroring = Vector2( 128, 128 )
 
 [node name="Sprite" type="Sprite" parent="Ground/Ground"]
 position = Vector2( 637.711, 358.428 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1280, 720 )
 
 [node name="test2" type="Sprite" parent="."]
 position = Vector2( 2722.63, 3314.06 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
-[node name="test" parent="test2" instance=ExtResource( 5 )]
+[node name="test" parent="test2" instance=ExtResource( 6 )]
+visible = false
 position = Vector2( -799.758, -800.212 )
-scale = Vector2( 1, 1 )
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
+[node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3.21865e-006, 0.000244141 )
 
-[node name="Stone_movable" parent="." instance=ExtResource( 7 )]
+[node name="Stone_movable" parent="." instance=ExtResource( 8 )]
 position = Vector2( 130.718, 79.223 )
 
-[node name="Textbox" parent="." instance=ExtResource( 8 )]
+[node name="Textbox" parent="." instance=ExtResource( 9 )]
+[connection signal="npc_area_in" from="npc area" to="Textbox" method="_on_npc_area_npc_area_in"]
+[connection signal="npc_area_out" from="npc area" to="Textbox" method="_on_npc_area_npc_area_out"]
 [connection signal="bossarea_entered" from="Boss Area" to="Textbox" method="_on_Boss_Area_bossarea_entered"]
 [connection signal="bossarea_left" from="Boss Area" to="Textbox" method="_on_Boss_Area_bossarea_left"]
 [connection signal="cam_pos_changed" from="Player" to="Textbox" method="_on_Player_cam_pos_changed"]

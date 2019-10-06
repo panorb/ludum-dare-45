@@ -2,10 +2,7 @@
 
 [ext_resource path="res://moving character/textbox/Textbox.gd" type="Script" id=1]
 [ext_resource path="res://moving character/textures/ufff.png" type="Texture" id=2]
-[ext_resource path="res://moving character/textures/Character.png" type="Texture" id=3]
-
-
-
+[ext_resource path="res://moving character/textures/Npc.png" type="Texture" id=3]
 
 [node name="Textbox" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,17 +12,15 @@ scale = Vector2( 1, 0.5 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
-[node name="BossSprite" type="Sprite" parent="."]
-position = Vector2( -315.883, 4.96902 )
-scale = Vector2( 1.6, 1.6 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -315.193, 4.90281 )
 texture = ExtResource( 3 )
-flip_h = true
 region_enabled = true
-region_rect = Rect2( 27.2052, -0.166027, 83.8232, 59.2434 )
+region_rect = Rect2( 0, 0, 130, 98.3583 )
 
 [node name="Text" type="Label" parent="."]
 margin_left = -152.196
 margin_top = -51.847
 margin_right = -112.196
 margin_bottom = -37.847
-text = "this is a fking text u idiot"
+text = "You got woffels?"

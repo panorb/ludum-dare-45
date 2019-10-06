@@ -11,5 +11,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("change_scene2"):
-		get_tree().change_scene("res://DrawingBoard.tscn")
+		get_tree().change_scene("res://DrawingBoard/DrawingBoard.tscn")
 	pass

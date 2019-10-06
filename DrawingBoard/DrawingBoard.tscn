@@ -117,9 +117,9 @@ stream = ExtResource( 11 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/__INIT__ = SubResource( 5 )
 anims/fade_away = SubResource( 6 )
-[connection signal="clear_ordered" from="Handle/Colors" to="Handle/DoneButton" method="_on_Colors_clear_ordered"]
 [connection signal="clear_ordered" from="Handle/Colors" to="Board/Drawing" method="_on_Colors_clear_ordered"]
+[connection signal="clear_ordered" from="Handle/Colors" to="Handle/DoneButton" method="_on_Colors_clear_ordered"]
 [connection signal="draw_color_changed" from="Handle/Colors" to="Board/Drawing" method="_on_Colors_draw_color_changed"]
-[connection signal="pen_drawn" from="Handle/OutputBoard" to="Handle/DoneButton" method="_on_OutputBoard_pen_drawn"]
 [connection signal="pen_drawn" from="Handle/OutputBoard" to="Board/Drawing" method="_on_OutputBoard_pen_drawn"]
+[connection signal="pen_drawn" from="Handle/OutputBoard" to="Handle/DoneButton" method="_on_OutputBoard_pen_drawn"]
 [connection signal="done_pressed" from="Handle/DoneButton" to="." method="_on_DoneButton_done_pressed"]
