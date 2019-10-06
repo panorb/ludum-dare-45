@@ -21,9 +21,16 @@ func get_drawing(identifier):
 
 func start_drawing_batch(name):
 	var file = File.new()
-	file.open("res://DrawingManager/" + name + ".txt", file.READ)
+	
+	if file.file_exists("res://DrawingManager/" + name + ".txt"):
+		file.open("res://DrawingManager/" + name + ".txt", file.READ)
+	else:
+		file.open("res://DrawingManager/error_batch.txt", file.READ)
+	
 	cur_batch_lines = file.get_as_text().split('\n')
 	file.close()
+	
+	print(cur_batch_lines)
 	
 	handle_line()
 	get_tree().change_scene(drawing_board_scene_path)
