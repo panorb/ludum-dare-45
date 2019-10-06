@@ -30,7 +30,7 @@ func _process(delta):
 
 func _on_DoneButton_done_pressed():
 	var image_texture = ImageTexture.new()
-	image_texture.create_from_image(board_viewport.get_texture().get_data())
+	image_texture.create_from_image(board_viewport.get_texture().get_data(), 3)
 	
 	emit_signal('drawing_done', image_texture)
 	
