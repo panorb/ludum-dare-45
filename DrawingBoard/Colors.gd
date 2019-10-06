@@ -6,17 +6,19 @@ export var clear_tool_scene : PackedScene = preload("res://DrawingBoard/ClearToo
 
 onready var switch_sound = get_node("../../Sounds/Switch")
 
-var colors = [Color.red, Color.aqua, Color.beige, Color.yellow, Color.darkgreen]
-var selected_color = colors[0]
+var colors = []
+var selected_color
 signal draw_color_changed(selected_color)
 signal clear_ordered
-
 
 func create_tools():
 	for node in get_children():
 		node.queue_free()
 	
 	var x = 36;
+	
+	selected_color = colors[0]
+	emit_signal("draw_color_changed", selected_color)
 	
 	# Pickable colors
 	for color in colors:

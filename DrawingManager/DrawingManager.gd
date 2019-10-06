@@ -60,8 +60,11 @@ func handle_line():
 	var colors = []
 	var color_strings = line_parts[3].split(';')
 	for color_string in color_strings:
-		var color_rgb_strings = color_string.split(',')
-		colors.append(Color(float(color_rgb_strings[0]), float(color_rgb_strings[1]), float(color_rgb_strings[2]), 1.0))
+		if color_string[0] == '#':
+			colors.append(Color(color_string))
+		else:
+			var color_rgb_strings = color_string.split(',')
+			colors.append(Color(float(color_rgb_strings[0]), float(color_rgb_strings[1]), float(color_rgb_strings[2]), 1.0))
 	
 	self.cur_identifier = identifier
 	self.cur_task = task

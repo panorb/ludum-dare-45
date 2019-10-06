@@ -1,1 +1,1 @@
-PlayButton:Please draw a play button:Draw in the frame;Make it look playful:1.0,0.0,1.0;0.3,0.8,0.6
+PlayButton:Please draw a play button:Draw in the frame;Make it look playful:#00ff00;#ff00ff
