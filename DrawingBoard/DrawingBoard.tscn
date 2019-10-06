@@ -144,6 +144,7 @@ texture = SubResource( 6 )
 position = Vector2( 640, 650 )
 
 [node name="Sounds" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Switch" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 11 )
@@ -167,10 +168,10 @@ margin_right = 1280.0
 margin_bottom = 720.0
 mouse_filter = 2
 color = Color( 1, 1, 1, 0 )
-[connection signal="clear_ordered" from="Handle/Colors" to="Handle/DoneButton" method="_on_Colors_clear_ordered"]
 [connection signal="clear_ordered" from="Handle/Colors" to="Board/Drawing" method="_on_Colors_clear_ordered"]
+[connection signal="clear_ordered" from="Handle/Colors" to="Handle/DoneButton" method="_on_Colors_clear_ordered"]
 [connection signal="draw_color_changed" from="Handle/Colors" to="Board/Drawing" method="_on_Colors_draw_color_changed"]
-[connection signal="pen_drawn" from="Handle/OutputBoard" to="Handle/DoneButton" method="_on_OutputBoard_pen_drawn"]
 [connection signal="pen_drawn" from="Handle/OutputBoard" to="Board/Drawing" method="_on_OutputBoard_pen_drawn"]
+[connection signal="pen_drawn" from="Handle/OutputBoard" to="Handle/DoneButton" method="_on_OutputBoard_pen_drawn"]
 [connection signal="pen_release" from="Handle/OutputBoard" to="Board/Drawing" method="_on_OutputBoard_pen_release"]
 [connection signal="done_pressed" from="Handle/DoneButton" to="." method="_on_DoneButton_done_pressed"]

@@ -9,6 +9,7 @@ var cur_batch_lines
 var cur_identifier
 var cur_task
 var cur_description
+var cur_colors
 
 func _ready():
 	start_drawing_batch("startup_batch")
@@ -44,14 +45,21 @@ func handle_line():
 	var task = line_parts[1]
 	var description = line_parts[2].split(';')
 	
+	var colors = []
+	var color_strings = line_parts[3].split(';')
+	for color_string in color_strings:
+		var color_rgb_strings = color_string.split(',')
+		colors.append(Color(float(color_rgb_strings[0]), float(color_rgb_strings[1]), float(color_rgb_strings[2]), 1.0))
+	
 	self.cur_identifier = identifier
 	self.cur_task = task
 	self.cur_description = description
+	self.cur_colors = colors
 
 func _drawing_board_ready():
 	print('c')
 	var drawing_board = get_node('/root/DrawingBoard')
-	drawing_board.init(cur_task, cur_description)
+	drawing_board.init(cur_task, cur_description, cur_colors)
 	drawing_board.connect('drawing_done', self, '_drawing_done')
 	drawing_board.connect('transition_finished', self, '_transition_finished')
 

@@ -11,7 +11,11 @@ var selected_color = colors[0]
 signal draw_color_changed(selected_color)
 signal clear_ordered
 
-func _ready():
+
+func create_tools():
+	for node in get_children():
+		node.queue_free()
+	
 	var x = 36;
 	
 	# Pickable colors
@@ -43,6 +47,9 @@ func _ready():
 	clear_tool.connect('clear_ordered', self, '_clear_ordered')
 	clear_tool.connect('hovered', self, '_hovered')
 	add_child(clear_tool)
+
+#func _ready():
+#	recreate_tools()
 
 func _draw_color_selected(color):
 	emit_signal("draw_color_changed", color)

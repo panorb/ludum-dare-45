@@ -13,6 +13,7 @@ onready var eraser_sound = get_node("../../Sounds/Eraser")
 onready var clear_sound = get_node("../../Sounds/Clear")
 onready var sound = draw_sound setget ,sound_get
 
+
 func is_eraser():
 	return selected_color == Color(1, 0, 1, 1)
 

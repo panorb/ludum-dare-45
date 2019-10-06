@@ -4,6 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+onready var colors_node = get_node('Handle/Colors')
 onready var board_viewport = get_node('Board')
 onready var animation_player = get_node('AnimationPlayer')
 onready var task_label = get_node('Task')
@@ -11,8 +12,10 @@ onready var task_label = get_node('Task')
 signal drawing_done(drawing_texture)
 signal transition_finished
 
-func init(task, description):
+func init(task, description, colors):
 	task_label.text = task
+	colors_node.colors = colors
+	colors_node.create_tools()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
