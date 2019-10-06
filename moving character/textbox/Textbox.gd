@@ -1,5 +1,9 @@
 extends Node2D
 var start_pos= 160
+var infront = false
+var npc_loaded = false
+var got_item = false
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -18,9 +22,12 @@ func load_File(data):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var contend = load_File("test_lul")
-	var text = get_node("Text")
-	text.set_text(contend)
+	if Input.is_action_pressed("interact") and infront:
+		var contend = load_File("npc text2")
+		var text = get_node("Text")
+		text.set_text(contend)
+		got_item = true
+		get_node("Sprite").set_texture(preload("res://moving character/textures/Npc_happy.png"))
 
 	
 	pass
@@ -35,9 +42,46 @@ func _on_Player_cam_pos_changed(cam_pos):
 
 func _on_Boss_Area_bossarea_entered():
 	start_pos = 0
+	var contend
+	get_node("Sprite").set_texture(preload("res://moving character/textures/Character.png"))
+	if got_item:
+		contend = load_File("boss text2")
+	else:
+		contend = load_File("boss text1")
+		
+	var text = get_node("Text")
+	text.set_text(contend)
+	
 	pass # Replace with function body.
 
 
 func _on_Boss_Area_bossarea_left():
 	start_pos= 160
+	pass # Replace with function body.
+
+
+func _on_npc_area_npc_area_in():
+	start_pos = 0
+
+	var contend
+	if not npc_loaded and not got_item:
+		get_node("Sprite").set_texture(preload("res://moving character/textures/Npc.png"))
+		contend = load_File("npc text1")
+		npc_loaded = true
+	else:
+		get_node("Sprite").set_texture(preload("res://moving character/textures/Npc_happy.png"))
+		contend = load_File("npc text2")
+	
+	var text = get_node("Text")
+	text.set_text(contend)
+	infront = true
+
+	pass # Replace with function body.
+
+
+func _on_npc_area_npc_area_out():
+	start_pos= 160
+	infront = false
+	npc_loaded = false
+	
 	pass # Replace with function body.

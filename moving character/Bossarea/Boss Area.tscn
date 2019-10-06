@@ -8,6 +8,7 @@ extents = Vector2( 500, 150 )
 
 [node name="Boss Area" type="Sprite"]
 position = Vector2( 2003.26, 461.939 )
+scale = Vector2( 2.7, 1.8 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
