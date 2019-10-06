@@ -1,25 +1,36 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://DrawingBoard.gd" type="Script" id=1]
 [ext_resource path="res://DrawingBoard/DrawingBoard.gd" type="Script" id=2]
 [ext_resource path="res://DrawingBoard/Background.png" type="Texture" id=3]
-[ext_resource path="res://DrawingBoard/Colors.gd" type="Script" id=4]
-[ext_resource path="res://DrawingBoard/OutputBoard.gd" type="Script" id=5]
-[ext_resource path="res://DrawingBoard/Frame.png" type="Texture" id=6]
-[ext_resource path="res://pink_to_transparency.shader" type="Shader" id=7]
-[ext_resource path="res://DrawingBoard/DoneButton/DoneButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://DrawingBoard/switch13.wav" type="AudioStream" id=9]
-[ext_resource path="res://DrawingBoard/drawing.wav" type="AudioStream" id=10]
-[ext_resource path="res://DrawingBoard/empty_trash.wav" type="AudioStream" id=11]
+[ext_resource path="res://DrawingBoard/Decoration/smiley.png" type="Texture" id=4]
+[ext_resource path="res://DrawingBoard/Decoration/math.png" type="Texture" id=5]
+[ext_resource path="res://DrawingBoard/Colors.gd" type="Script" id=6]
+[ext_resource path="res://DrawingBoard/OutputBoard.gd" type="Script" id=7]
+[ext_resource path="res://DrawingBoard/Frame.png" type="Texture" id=8]
+[ext_resource path="res://pink_to_transparency.shader" type="Shader" id=9]
+[ext_resource path="res://DrawingBoard/DoneButton/DoneButton.tscn" type="PackedScene" id=10]
+[ext_resource path="res://DrawingBoard/switch13.wav" type="AudioStream" id=11]
+[ext_resource path="res://DrawingBoard/drawing.wav" type="AudioStream" id=12]
+[ext_resource path="res://DrawingBoard/empty_trash.wav" type="AudioStream" id=13]
 
 [sub_resource type="World" id=1]
 resource_local_to_scene = true
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://DrawingBoard/COMIC.TTF"
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 7 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 192, 192 )
 
 [sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 7 )
+shader = ExtResource( 9 )
 shader_param/chroma_key = Color( 1, 0, 1, 1 )
 
 [sub_resource type="ViewportTexture" id=4]
@@ -55,6 +66,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 1279.19, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Overlay:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="DrawingBoard" type="Node2D"]
 script = ExtResource( 1 )
@@ -78,20 +101,41 @@ texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1280, 720 )
 
+[node name="Decoration" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Smiley" type="Sprite" parent="Decoration"]
+position = Vector2( 1127.67, 644.458 )
+texture = ExtResource( 4 )
+
+[node name="Math" type="Sprite" parent="Decoration"]
+position = Vector2( 221.581, 364.779 )
+texture = ExtResource( 5 )
+
+[node name="Task" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 483.831
+margin_top = 73.9205
+margin_right = 743.831
+margin_bottom = 119.921
+custom_fonts/font = SubResource( 8 )
+text = "Draw me a sheep!"
+
 [node name="Handle" type="Node2D" parent="."]
-position = Vector2( 1279.19, 0 )
+editor/display_folded = true
 
 [node name="Colors" type="Node2D" parent="Handle"]
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 
 [node name="OutputBoard" type="Area2D" parent="Handle"]
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Handle/OutputBoard"]
 shape = SubResource( 2 )
 
 [node name="Frame" type="Sprite" parent="Handle/OutputBoard"]
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Output" type="Sprite" parent="Handle/OutputBoard"]
 material = SubResource( 3 )
@@ -99,27 +143,34 @@ position = Vector2( -0.100586, 0.491943 )
 scale = Vector2( 3, 3 )
 texture = SubResource( 4 )
 
-[node name="DoneButton" parent="Handle" instance=ExtResource( 8 )]
+[node name="DoneButton" parent="Handle" instance=ExtResource( 10 )]
 position = Vector2( 640, 650 )
 
 [node name="Sounds" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Switch" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource( 9 )
+stream = ExtResource( 11 )
 volume_db = -5.0
 
 [node name="Drawing" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource( 10 )
+stream = ExtResource( 12 )
 
 [node name="Clear" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource( 11 )
+stream = ExtResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/__INIT__ = SubResource( 5 )
 anims/fade_away = SubResource( 6 )
-[connection signal="clear_ordered" from="Handle/Colors" to="Handle/DoneButton" method="_on_Colors_clear_ordered"]
+
+[node name="Overlay" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
 [connection signal="clear_ordered" from="Handle/Colors" to="Board/Drawing" method="_on_Colors_clear_ordered"]
+[connection signal="clear_ordered" from="Handle/Colors" to="Handle/DoneButton" method="_on_Colors_clear_ordered"]
 [connection signal="draw_color_changed" from="Handle/Colors" to="Board/Drawing" method="_on_Colors_draw_color_changed"]
-[connection signal="pen_drawn" from="Handle/OutputBoard" to="Handle/DoneButton" method="_on_OutputBoard_pen_drawn"]
 [connection signal="pen_drawn" from="Handle/OutputBoard" to="Board/Drawing" method="_on_OutputBoard_pen_drawn"]
+[connection signal="pen_drawn" from="Handle/OutputBoard" to="Handle/DoneButton" method="_on_OutputBoard_pen_drawn"]
 [connection signal="done_pressed" from="Handle/DoneButton" to="." method="_on_DoneButton_done_pressed"]
