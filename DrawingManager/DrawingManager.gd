@@ -9,12 +9,12 @@ export var main_game_scene : PackedScene = preload("res://moving character/Movem
 export var drawing_board_scene : PackedScene = preload("res://DrawingBoard/DrawingBoard.tscn")
 
 var cur_batch_name = "error_batch"
-var cur_batch_lines
+var cur_batch_lines = 'PLACEHOLDER:PLACEHOLDER:PLACEHOLDER:#000000'
 
-var cur_identifier
-var cur_task
-var cur_description
-var cur_colors
+var cur_identifier = 'PLACEHOLDER'
+var cur_task = 'PLACEHOLDER'
+var cur_description = 'PLACEHOLDER'
+var cur_colors = []
 
 func _ready():
 	start_drawing_batch("startup_batch")
@@ -29,8 +29,6 @@ func start_drawing_batch(name):
 	if name in globals.drawn:
 		return
 	
-	globals.drawn.append(name)
-	
 	var file = File.new()
 	
 	if file.file_exists("res://DrawingManager/" + name + ".txt"):
@@ -43,10 +41,9 @@ func start_drawing_batch(name):
 	cur_batch_lines = file.get_as_text().split('\n')
 	file.close()
 	
-	print(cur_batch_lines)
-	
 	handle_line()
 	get_tree().change_scene_to(drawing_board_scene)
+	globals.drawn.append(name)
 
 func handle_line():
 	var line = cur_batch_lines[0]
@@ -72,14 +69,12 @@ func handle_line():
 	self.cur_colors = colors
 
 func _drawing_board_ready():
-	print('c')
 	var drawing_board = get_node('/root/DrawingBoard')
 	drawing_board.init(cur_task, cur_description, cur_colors)
 	drawing_board.connect('drawing_done', self, '_drawing_done')
 	drawing_board.connect('transition_finished', self, '_transition_finished')
 
 func _drawing_done(drawing_texture):
-	print('dc')
 	drawings[cur_identifier] = drawing_texture
 	get_tree().call_group('Drawings', '_drawing_changed', cur_identifier, drawing_texture)
 	
@@ -90,9 +85,12 @@ func _drawing_done(drawing_texture):
 		get_tree().reload_current_scene()
 		handle_line()
 	else:
-		print('finished batch, returning')
+		drawing_board.play_transition()
 
 func _transition_finished():
+	var drawing_board = get_node('/root/DrawingBoard')
+	drawing_board.queue_free()
+	
 	if cur_batch_name == startup_batch:
 		get_tree().change_scene_to(main_menu_scene)
 	else:

@@ -28,12 +28,13 @@ func _process(delta):
 		get_tree().change_scene("res://moving character/Movemant.tscn")
 	pass
 
+func play_transition():
+	animation_player.play("fade_away")
+	yield(animation_player, "animation_finished")
+	emit_signal('transition_finished')
+
 func _on_DoneButton_done_pressed():
 	var image_texture = ImageTexture.new()
 	image_texture.create_from_image(board_viewport.get_texture().get_data(), 3)
 	
 	emit_signal('drawing_done', image_texture)
-	
-	animation_player.play("fade_away")
-	yield(get_tree().create_timer(1.5), 'timeout')
-	emit_signal('transition_finished')

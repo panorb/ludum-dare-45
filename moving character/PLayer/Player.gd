@@ -2,6 +2,7 @@ extends KinematicBody2D
 signal cam_pos_changed(cam_pos)
 var speed = 400
 
+onready var run_sound = get_node("Run")
 onready var globals = get_node("/root/Globals")
 
 # Declare member variables here. Examples:
@@ -37,6 +38,14 @@ func _physics_process(delta):
 			pos.x+=1
 			dir = "right"
 	pos = Vector2(pos.x,pos.y)
+	
+	if (pos.x > 0 or pos.y > 0):
+		if not run_sound.playing:
+			run_sound.play()
+	else:
+		if run_sound.playing:
+			run_sound.stop()
+		
 	#randy is pretty stupid maybe consider removing it
 	move_and_slide(pos*speed)
 	if dir == "right":

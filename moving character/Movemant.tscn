@@ -140,6 +140,7 @@ position = Vector2( -1217.61, -78.4165 )
 position = Vector2( 408.068, 1021.64 )
 
 [node name="Drawingareas" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Enemy" parent="Drawingareas" instance=ExtResource( 17 )]
 position = Vector2( 3239.71, 621.327 )
@@ -176,5 +177,5 @@ shape = SubResource( 6 )
 [connection signal="bossarea_left" from="Boss Area" to="Textbox" method="_on_Boss_Area_bossarea_left"]
 [connection signal="cam_pos_changed" from="Player" to="Textbox" method="_on_Player_cam_pos_changed"]
 [connection signal="close_doors" from="Boss" to="Closing Bossdoors" method="_on_Boss_close_doors"]
-[connection signal="hide" from="Boss" to="Boss Area" method="_on_Boss_hide"]
 [connection signal="hide" from="Boss" to="Closing Bossdoors" method="_on_Boss_hide"]
+[connection signal="hide" from="Boss" to="Boss Area" method="_on_Boss_hide"]

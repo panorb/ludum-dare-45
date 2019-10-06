@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://moving character/PLayer/Player.gd" type="Script" id=1]
 [ext_resource path="res://moving character/PLayer/Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://moving character/Drawing/Drawing.tscn" type="PackedScene" id=3]
 [ext_resource path="res://moving character/textures/Character.png" type="Texture" id=4]
+[ext_resource path="res://moving character/PLayer/run.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -34,4 +35,7 @@ position = Vector2( -0.193703, 32.1561 )
 scale = Vector2( 0.5, 0.5 )
 texture = null
 drawing_identifier = "Shoes"
+
+[node name="Run" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 [connection signal="cam_pos_changed" from="Camera2D" to="." method="_on_Camera2D_cam_pos_changed"]

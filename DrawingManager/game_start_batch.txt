@@ -1,0 +1,1 @@
+Player:Paint your Hero!:Let him face to the left....:#000000;#00aa00;#0069f9;#ff0000;#ff9b00;#ff00f7

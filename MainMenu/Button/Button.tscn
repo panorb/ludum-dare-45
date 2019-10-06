@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 2, 2 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -33,10 +33,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+"values": [ Vector2( 2, 2 ), Vector2( 2.4, 2.4 ) ]
 }
 
 [node name="Button" instance=ExtResource( 1 )]
+scale = Vector2( 2, 2 )
 
 [node name="Control" type="Control" parent="." index="0"]
 margin_left = -64.0

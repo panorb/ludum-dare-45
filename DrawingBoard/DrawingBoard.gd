@@ -13,7 +13,6 @@ onready var eraser_sound = get_node("../../Sounds/Eraser")
 onready var clear_sound = get_node("../../Sounds/Clear")
 onready var sound = draw_sound setget ,sound_get
 
-
 func is_eraser():
 	return selected_color == Color(1, 0, 1, 1)
 
@@ -47,9 +46,7 @@ func _draw():
 		draw_line(oldMousePos, mousePos, selected_color, 4)
 	
 	if clear_ordered:
-		var rng = RandomNumberGenerator.new()
-		draw_rect(Rect2(0, 0, 128, 128), Color(rng.randf(), randf(), randf(), 1))
-		# draw_rect(Rect2(0, 0, 128, 128), Color(1, randf(), randf(), 1))
+		draw_rect(Rect2(0, 0, 128, 128), Color(1, 0, 1, 1))
 	
 	draw_point_ordered = false
 	clear_ordered = false
