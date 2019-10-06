@@ -62,4 +62,4 @@ func _on_OutputBoard_pen_drawn(mousePos):
 
 
 func _on_Colors_clear_ordered():
-	self.draw_value = 0
+	self.draw_value = 100.0
