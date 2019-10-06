@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/switch13.wav-09325771aba67e97059f17e8845ac51f.sample"
+
+[deps]
+
+source_file="res://DrawingBoard/switch13.wav"
+dest_files=[ "res://.import/switch13.wav-09325771aba67e97059f17e8845ac51f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

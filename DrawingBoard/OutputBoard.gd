@@ -14,4 +14,6 @@ func _process(delta):
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		var mousePos = collision_shape.extents - (position - get_global_mouse_position())
 		mousePos = mousePos / output_sprite.scale
-		emit_signal('pen_drawn', mousePos)
+		
+		if (mousePos.x > -2 and mousePos.x <= 129 and mousePos.y > -2 and mousePos.y <= 129):
+			emit_signal('pen_drawn', mousePos)

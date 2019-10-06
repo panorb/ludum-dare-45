@@ -1,19 +1,16 @@
 extends Node2D
 
-var color = Color.aqua
-onready var color_rect = get_node('ColorRect')
+var color = Color(1, 0, 1, 1)
+onready var control = get_node('Control')
+onready var sprite = get_node('Sprite')
 onready var animation_player = get_node('AnimationPlayer')
 signal draw_color_selected(color)
 signal hovered
 
-func init(color):
-	self.color = color
-
 func _ready():
-	color_rect.connect('mouse_entered', self, '_mouse_entered')
-	color_rect.connect('mouse_exited', self, '_mouse_exited')
-	color_rect.connect('gui_input', self, '_gui_input')
-	color_rect.color = color
+	control.connect('mouse_entered', self, '_mouse_entered')
+	control.connect('mouse_exited', self, '_mouse_exited')
+	control.connect('gui_input', self, '_gui_input')
 	animation_player.play("__INIT__")
 
 func _mouse_entered():
