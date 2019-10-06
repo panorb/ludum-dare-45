@@ -1,11 +1,14 @@
 extends Node
 
 var drawings = {}
-
 onready var globals = get_node("/root/Globals")
 
-var main_game_scene_path = "res://moving character/Movemant.tscn"
-var drawing_board_scene_path = "res://DrawingBoard/DrawingBoard.tscn"
+export var startup_batch : String = "startup_batch"
+export var main_menu_scene : PackedScene = preload("res://MainMenu/MainMenu.tscn")
+export var main_game_scene : PackedScene = preload("res://moving character/Movemant.tscn")
+export var drawing_board_scene : PackedScene = preload("res://DrawingBoard/DrawingBoard.tscn")
+
+var cur_batch_name = "error_batch"
 var cur_batch_lines
 
 var cur_identifier
@@ -31,8 +34,10 @@ func start_drawing_batch(name):
 	var file = File.new()
 	
 	if file.file_exists("res://DrawingManager/" + name + ".txt"):
+		cur_batch_name = name
 		file.open("res://DrawingManager/" + name + ".txt", file.READ)
 	else:
+		cur_batch_name = "error_batch"
 		file.open("res://DrawingManager/error_batch.txt", file.READ)
 	
 	cur_batch_lines = file.get_as_text().split('\n')
@@ -41,7 +46,7 @@ func start_drawing_batch(name):
 	print(cur_batch_lines)
 	
 	handle_line()
-	get_tree().change_scene(drawing_board_scene_path)
+	get_tree().change_scene_to(drawing_board_scene)
 
 func handle_line():
 	var line = cur_batch_lines[0]
@@ -85,4 +90,7 @@ func _drawing_done(drawing_texture):
 		print('finished batch, returning')
 
 func _transition_finished():
-	get_tree().change_scene(main_game_scene_path)
+	if cur_batch_name == startup_batch:
+		get_tree().change_scene_to(main_menu_scene)
+	else:
+		get_tree().change_scene_to(main_game_scene)

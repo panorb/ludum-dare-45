@@ -1,0 +1,4 @@
+Armor:Draw yourself your armor.:Be Fancy!;Fuck it.:1.0,1.0,1.0;0.3,0.3,0.6
+PlayButton:Please draw a play button:Draw in the frame;Make it look playful:1.0,0.0,1.0;0.3,0.8,0.6
+Sheep:Draw me a sheep!:It should be flushy and happy;Try your best!:1.0,1.0,1.0;0.3,0.3,0.6
+Player:Paint your Hero!.:Let him face to the left....:1.0,1.0,1.0;0.3,0.3,0.6
