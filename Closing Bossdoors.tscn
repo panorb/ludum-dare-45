@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Closing Bossdoors.gd" type="Script" id=1]
+[ext_resource path="res://tilemap/tilesets/andere/sheet.png" type="Texture" id=2]
+[ext_resource path="res://CollisionShape2D.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 6 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6, 30 )
+
+[node name="Closing Bossdoors" type="Node2D"]
+position = Vector2( 5511.49, 6401.2 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 57.4063, -167.906 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 99.5328, 66.2254, 56.0313, 11.8231 )
+
+[node name="RigidBody2D" type="StaticBody2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/RigidBody2D"]
+shape = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -1948.7, 153.423 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 162.579, 68.7865, 11.3874, 54.9198 )
+
+[node name="RigidBody2D" type="StaticBody2D" parent="Sprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/RigidBody2D"]
+shape = SubResource( 2 )
+script = ExtResource( 3 )
+[connection signal="draw" from="." to="Sprite/RigidBody2D/CollisionShape2D" method="_on_Closing_Bossdoors_draw"]
+[connection signal="draw" from="." to="Sprite2/RigidBody2D/CollisionShape2D" method="_on_Closing_Bossdoors_draw"]
+[connection signal="hide" from="." to="Sprite/RigidBody2D/CollisionShape2D" method="_on_Closing_Bossdoors_hide"]
+[connection signal="hide" from="." to="Sprite2/RigidBody2D/CollisionShape2D" method="_on_Closing_Bossdoors_hide"]

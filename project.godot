@@ -19,6 +19,12 @@ config/name="Pen and Play"
 run/main_scene="res://DrawingBoard/DrawingBoard.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+
 [display]
 
 window/size/width=1280
@@ -28,7 +34,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "vnen.tiled_importer" )
+enabled=PoolStringArray( "eska.aseprite_importer", "vnen.tiled_importer" )
 
 [input]
 

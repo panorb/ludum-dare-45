@@ -17,27 +17,26 @@
 [sub_resource type="World" id=1]
 resource_local_to_scene = true
 
-[sub_resource type="DynamicFontData" id=7]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://DrawingBoard/COMIC.TTF"
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 outline_size = 6
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 7 )
+font_data = SubResource( 2 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 192, 192 )
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 9 )
 shader_param/chroma_key = Color( 1, 0, 1, 1 )
 
-[sub_resource type="ViewportTexture" id=4]
+[sub_resource type="ViewportTexture" id=6]
 viewport_path = NodePath("Board")
 
-[sub_resource type="Animation" id=5]
-resource_name = "__INIT__"
+[sub_resource type="Animation" id=7]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Handle:position")
@@ -52,8 +51,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "fade_away"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Handle:position")
 tracks/0/interp = 1
@@ -119,7 +117,7 @@ margin_left = 483.831
 margin_top = 73.9205
 margin_right = 743.831
 margin_bottom = 119.921
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 3 )
 text = "Draw me a sheep!"
 
 [node name="Handle" type="Node2D" parent="."]
@@ -132,16 +130,16 @@ script = ExtResource( 6 )
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Handle/OutputBoard"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Frame" type="Sprite" parent="Handle/OutputBoard"]
 texture = ExtResource( 8 )
 
 [node name="Output" type="Sprite" parent="Handle/OutputBoard"]
-material = SubResource( 3 )
+material = SubResource( 5 )
 position = Vector2( -0.100586, 0.491943 )
 scale = Vector2( 3, 3 )
-texture = SubResource( 4 )
+texture = SubResource( 6 )
 
 [node name="DoneButton" parent="Handle" instance=ExtResource( 10 )]
 position = Vector2( 640, 650 )
@@ -160,17 +158,17 @@ stream = ExtResource( 12 )
 stream = ExtResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/__INIT__ = SubResource( 5 )
-anims/fade_away = SubResource( 6 )
+anims/__INIT__ = SubResource( 7 )
+anims/fade_away = SubResource( 8 )
 
 [node name="Overlay" type="ColorRect" parent="."]
 margin_right = 1280.0
 margin_bottom = 720.0
 mouse_filter = 2
 color = Color( 1, 1, 1, 0 )
-[connection signal="clear_ordered" from="Handle/Colors" to="Board/Drawing" method="_on_Colors_clear_ordered"]
 [connection signal="clear_ordered" from="Handle/Colors" to="Handle/DoneButton" method="_on_Colors_clear_ordered"]
+[connection signal="clear_ordered" from="Handle/Colors" to="Board/Drawing" method="_on_Colors_clear_ordered"]
 [connection signal="draw_color_changed" from="Handle/Colors" to="Board/Drawing" method="_on_Colors_draw_color_changed"]
-[connection signal="pen_drawn" from="Handle/OutputBoard" to="Board/Drawing" method="_on_OutputBoard_pen_drawn"]
 [connection signal="pen_drawn" from="Handle/OutputBoard" to="Handle/DoneButton" method="_on_OutputBoard_pen_drawn"]
+[connection signal="pen_drawn" from="Handle/OutputBoard" to="Board/Drawing" method="_on_OutputBoard_pen_drawn"]
 [connection signal="done_pressed" from="Handle/DoneButton" to="." method="_on_DoneButton_done_pressed"]

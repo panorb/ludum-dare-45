@@ -1,5 +1,5 @@
 extends Node2D
-var start_pos= 160
+var start_pos= 150
 var infront = false
 var npc_loaded = false
 var got_item = false
@@ -36,14 +36,14 @@ func _process(delta):
 
 func _on_Player_cam_pos_changed(cam_pos):
 	position.x = cam_pos.x
-	position.y = cam_pos.y + 280 + start_pos
+	position.y = cam_pos.y + 150 + start_pos
 	pass # Replace with function body.
 
 
 func _on_Boss_Area_bossarea_entered():
 	start_pos = 0
 	var contend
-	get_node("Sprite").set_texture(preload("res://moving character/textures/Character.png"))
+	get_node("Sprite").set_texture(preload("res://moving character/textures/boss_face.png"))
 	if got_item:
 		contend = load_File("boss text2")
 	else:
@@ -56,7 +56,7 @@ func _on_Boss_Area_bossarea_entered():
 
 
 func _on_Boss_Area_bossarea_left():
-	start_pos= 160
+	start_pos= 150
 	pass # Replace with function body.
 
 
@@ -80,7 +80,7 @@ func _on_npc_area_npc_area_in():
 
 
 func _on_npc_area_npc_area_out():
-	start_pos= 160
+	start_pos= 150
 	infront = false
 	npc_loaded = false
 	

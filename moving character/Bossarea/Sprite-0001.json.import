@@ -1,0 +1,16 @@
+[remap]
+
+importer="eska.aseprite_importer"
+type="PackedScene"
+path="res://.import/Sprite-0001.json-8ed975525bfa0995d868924b394cd057.scn"
+
+[deps]
+
+source_file="res://moving character/Bossarea/Sprite-0001.json"
+dest_files=[ "res://.import/Sprite-0001.json-8ed975525bfa0995d868924b394cd057.scn" ]
+
+[params]
+
+sheet_image="res://moving character/Bossarea/Sprite-0001.png"
+post_script=""
+autoplay_animation=""
