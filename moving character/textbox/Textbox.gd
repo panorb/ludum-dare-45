@@ -39,16 +39,20 @@ func _on_Player_cam_pos_changed(cam_pos):
 	position.y = cam_pos.y + 150 + start_pos
 	pass # Replace with function body.
 
+var boss_dialog_pos = 1
 
 func _on_Boss_Area_bossarea_entered():
-	start_pos = 0
 	var contend
 	get_node("Sprite").set_texture(preload("res://moving character/textures/boss_face.png"))
 	if got_item:
 		contend = load_File("boss text2")
 	else:
-		contend = load_File("boss text1")
-		
+		contend = load_File("boss text" + boss_dialog_pos)
+	
+	if contend.startswith("+"):
+		get_node("/root/DrawingManager").start_drawing_batch(contend.substr(1, contend.length()))
+	
+	start_pos = 0
 	var text = get_node("Text")
 	text.set_text(contend)
 	
