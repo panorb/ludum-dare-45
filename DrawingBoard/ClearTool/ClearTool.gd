@@ -20,5 +20,5 @@ func _mouse_exited():
 	animation_player.play_backwards("hover")
 
 func _gui_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
 		emit_signal('clear_ordered')

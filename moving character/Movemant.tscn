@@ -1,4 +1,5 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
+
 
 [ext_resource path="res://moving character/Movemant.gd" type="Script" id=1]
 [ext_resource path="res://npc area.tscn" type="PackedScene" id=2]
@@ -16,6 +17,8 @@
 [ext_resource path="res://moving character/Bossarea/Boss.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Closing Bossdoors.tscn" type="PackedScene" id=15]
 [ext_resource path="res://moving character/enemy/Enemy.tscn" type="PackedScene" id=16]
+[ext_resource path="res://moving character/Drawing/DrawingArea.tscn" type="PackedScene" id=17]
+
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -38,6 +41,9 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 120, 120 )
 
 [node name="Movemant" type="Node2D"]
 material = SubResource( 2 )
@@ -103,6 +109,7 @@ drawing_identifier = "Hat"
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 3.21865e-006, 0.000244141 )
+collision_layer = 7
 
 [node name="Textbox" parent="." instance=ExtResource( 13 )]
 
@@ -112,6 +119,20 @@ position = Vector2( 4537.88, 6576.89 )
 [node name="Closing Bossdoors" parent="." instance=ExtResource( 15 )]
 
 [node name="Enemy" parent="." instance=ExtResource( 16 )]
+
+[node name="Drawing" parent="." instance=ExtResource( 17 )]
+position = Vector2( 5873.55, 1975.73 )
+drawing_identifier = "Armor"
+
+[node name="DrawingArea" parent="." instance=ExtResource( 18 )]
+position = Vector2( 332.232, 589.778 )
+collision_layer = 0
+collision_mask = 4
+batch_name = "startup_batch"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DrawingArea"]
+shape = SubResource( 3 )
+
 [connection signal="npc_area_in" from="npc area" to="Textbox" method="_on_npc_area_npc_area_in"]
 [connection signal="npc_area_out" from="npc area" to="Textbox" method="_on_npc_area_npc_area_out"]
 [connection signal="bossarea_entered" from="Boss Area" to="Textbox" method="_on_Boss_Area_bossarea_entered"]
