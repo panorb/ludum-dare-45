@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/drawing.wav-60f0c96ff5ae082e2f063a852100c65a.sample"
+path="res://.import/drawing.wav-0efc87bd9921e1928bc18b47e142ab5f.sample"
 
 [deps]
 
-source_file="res://DrawingBoard/drawing.wav"
-dest_files=[ "res://.import/drawing.wav-60f0c96ff5ae082e2f063a852100c65a.sample" ]
+source_file="res://DrawingBoard/PickableColor/drawing.wav"
+dest_files=[ "res://.import/drawing.wav-0efc87bd9921e1928bc18b47e142ab5f.sample" ]
 
 [params]
 

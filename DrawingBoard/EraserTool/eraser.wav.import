@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/success.wav-1f1e255592cf657965bd0e9016af2661.sample"
+path="res://.import/eraser.wav-32dfa9d78bc59fede15db1797bec4115.sample"
 
 [deps]
 
-source_file="res://DrawingBoard/success.wav"
-dest_files=[ "res://.import/success.wav-1f1e255592cf657965bd0e9016af2661.sample" ]
+source_file="res://DrawingBoard/EraserTool/eraser.wav"
+dest_files=[ "res://.import/eraser.wav-32dfa9d78bc59fede15db1797bec4115.sample" ]
 
 [params]
 

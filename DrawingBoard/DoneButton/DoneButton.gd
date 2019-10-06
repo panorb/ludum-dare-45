@@ -59,7 +59,6 @@ func _mouse_exited():
 
 func _on_OutputBoard_pen_drawn(mousePos):
 	self.draw_value = draw_value + 0.1
-	print(draw_value)
 
 
 func _on_Colors_clear_ordered():

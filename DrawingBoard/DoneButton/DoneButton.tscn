@@ -3,21 +3,22 @@
 [ext_resource path="res://DrawingBoard/DoneButton/DoneButton.gd" type="Script" id=1]
 [ext_resource path="res://DrawingBoard/Particle.png" type="Texture" id=2]
 [ext_resource path="res://DrawingBoard/DoneButton/Done.png" type="Texture" id=3]
-[ext_resource path="res://DrawingBoard/fairy_dust.wav" type="AudioStream" id=4]
-[ext_resource path="res://DrawingBoard/success.wav" type="AudioStream" id=5]
+[ext_resource path="res://DrawingBoard/DoneButton/fairy_dust.wav" type="AudioStream" id=4]
+[ext_resource path="res://DrawingBoard/DoneButton/success.wav" type="AudioStream" id=5]
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.15398, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 3
 emission_point_count = 1
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = 60.4
@@ -29,7 +30,7 @@ angle = 141.8
 angle_random = 1.0
 scale = 4.0
 scale_random = 1.0
-scale_curve = SubResource( 3 )
+scale_curve = SubResource( 2 )
 color = Color( 0.388235, 0.517647, 0.643137, 1 )
 hue_variation = -0.1
 hue_variation_random = 1.0
@@ -78,7 +79,7 @@ margin_bottom = 38.0
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 80
 lifetime = 2.0
-process_material = SubResource( 1 )
+process_material = SubResource( 3 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -93,7 +94,7 @@ anims/hover = SubResource( 5 )
 
 [node name="FairyDust" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 4 )
-volume_db = -25.0
+volume_db = -15.0
 
 [node name="Success" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 5 )

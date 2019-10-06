@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/empty_trash.wav-8e87fe02cd45c57b18f4d0914d26c20b.sample"
+
+[deps]
+
+source_file="res://DrawingBoard/ClearTool/empty_trash.wav"
+dest_files=[ "res://.import/empty_trash.wav-8e87fe02cd45c57b18f4d0914d26c20b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

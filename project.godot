@@ -16,8 +16,18 @@ _global_script_class_icons={
 [application]
 
 config/name="Pen and Play"
-run/main_scene="res://DrawingBoard/DrawingBoard.tscn"
+run/main_scene="res://MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+DrawingManager="*res://DrawingManager/DrawingManager.gd"
+
+[debug]
+
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
 
 [display]
 

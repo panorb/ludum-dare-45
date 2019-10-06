@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/empty_trash.wav-d6843685645399ea2748f1c9afe0543b.sample"
+path="res://.import/success.wav-c164f52ebe2f6d17a15e61460dd932bb.sample"
 
 [deps]
 
-source_file="res://DrawingBoard/empty_trash.wav"
-dest_files=[ "res://.import/empty_trash.wav-d6843685645399ea2748f1c9afe0543b.sample" ]
+source_file="res://DrawingBoard/DoneButton/success.wav"
+dest_files=[ "res://.import/success.wav-c164f52ebe2f6d17a15e61460dd932bb.sample" ]
 
 [params]
 

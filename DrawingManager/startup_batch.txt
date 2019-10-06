@@ -1,0 +1,2 @@
+PlayButton:Please draw a play button:Draw in the frame;Make it look playful
+Sheep:Draw me a sheep!:It should be flushy and happy;Try your best!
