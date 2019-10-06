@@ -46,7 +46,9 @@ func _draw():
 		draw_line(oldMousePos, mousePos, selected_color, 4)
 	
 	if clear_ordered:
-		draw_rect(Rect2(0, 0, 128, 128), Color(1, 0, 1, 1))
+		var rng = RandomNumberGenerator.new()
+		draw_rect(Rect2(0, 0, 128, 128), Color(rng.randf(), randf(), randf(), 1))
+		# draw_rect(Rect2(0, 0, 128, 128), Color(1, randf(), randf(), 1))
 	
 	draw_point_ordered = false
 	clear_ordered = false
