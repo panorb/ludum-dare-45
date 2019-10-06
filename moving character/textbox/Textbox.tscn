@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://moving character/textbox/Textbox.gd" type="Script" id=1]
 [ext_resource path="res://moving character/textures/ufff.png" type="Texture" id=2]
 [ext_resource path="res://moving character/textures/Npc.png" type="Texture" id=3]
+[ext_resource path="res://font/Textbox.tres" type="DynamicFont" id=4]
 
 [node name="Textbox" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,8 +20,11 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 130, 98.3583 )
 
 [node name="Text" type="Label" parent="."]
-margin_left = -152.196
-margin_top = -51.847
-margin_right = -112.196
-margin_bottom = -37.847
+margin_left = -151.972
+margin_top = -52.3244
+margin_right = 428.028
+margin_bottom = -16.3244
+rect_min_size = Vector2( 580, 0 )
+custom_fonts/font = ExtResource( 4 )
 text = "You got woffels?"
+autowrap = true

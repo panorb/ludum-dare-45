@@ -1,7 +1,4 @@
-extends Sprite
-signal npc_area_in
-signal npc_area_out
-onready var globals = get_node("/root/Globals")
+extends RayCast2D
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -16,12 +13,7 @@ func _ready():
 #	pass
 
 
-func _on_Area2D_body_entered(body):
-	globals.position=get_node("../Player").position
-	emit_signal("npc_area_in")
+func _on_Sprite_draw():
+	self.set_enabled(true)
 	pass # Replace with function body.
 
-
-func _on_Area2D_body_exited(body):
-	emit_signal("npc_area_out")
-	pass # Replace with function body.
