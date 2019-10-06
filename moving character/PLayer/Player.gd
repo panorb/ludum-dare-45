@@ -41,7 +41,7 @@ func _physics_process(delta):
 			dir = "right"
 	pos = Vector2(pos.x,pos.y)
 	
-	if (pos.x > 0 or pos.y > 0):
+	if (pos.x != 0 or pos.y != 0):
 		if not run_sound.playing:
 			run_sound.play()
 	else:

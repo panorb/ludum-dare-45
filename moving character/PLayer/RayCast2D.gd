@@ -15,5 +15,3 @@ func _ready():
 
 func _on_Sprite_draw():
 	self.set_enabled(true)
-	pass # Replace with function body.
-
